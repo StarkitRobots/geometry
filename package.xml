@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package>
+  <name>rhoban_utils</name>
+  <version>0.0.0</version>
+  <description>The miscellaneous utils for the robocup</description>
+
+  <maintainer email="lhofer@labri.fr">Ludovic Hofer</maintainer>
+  <author email="lhofer@labri.fr">Ludovic Hofer</author>
+  <author email="gpassault@labri.fr">Grégoire Passault</author>
+  <author email="qrouxel@labri.fr">Quentin Rouxel</author>
+  <author email="snguyen@labri.fr">Steve N'guyen</author>
+
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>rhoban_utils</build_depend>
+  <run_depend>rhoban_utils</run_depend>
+
+  <export>
+  </export>
+</package>
