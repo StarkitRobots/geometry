@@ -14,7 +14,7 @@
 
   <buildtool_depend>catkin</buildtool_depend>
 
-  <build_depend>rhoban_utils</build_depend>
+  <build_depend>rhoban_utils</build_depend> <!-- rhobandeps/rhobanUtils -->
   <run_depend>rhoban_utils</run_depend>
 
   <export>
