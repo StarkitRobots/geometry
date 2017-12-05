@@ -3,9 +3,12 @@
 
 #include <stdexcept>
 
-#include "Interpolation.hpp"
+#include "rhoban_geometry/interpolation.h"
 
 using namespace std;
+
+namespace rhoban_geometry
+{
 
 /* Source for algorithm :
  * - http://easycalculation.com/analytical/learn-least-square-regression.php
@@ -83,4 +86,6 @@ std::pair<unsigned long long, double> leastSquareLine(std::list<unsigned long lo
 	result.second = (1.0 * ((long long int) (1.0 * (n * sum_xy - sum_x * sum_y) - (long long int) (n * sum_x2 - sum_x * sum_x)))) / (n * sum_x2 - sum_x * sum_x);
 	result.first = ((sum_y + miny) - (1.0 + result.second) * (sum_x + minx)) / n;
 	return result;
+}
+
 }

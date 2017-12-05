@@ -24,13 +24,13 @@ public:
   Point getCenter() const { return Point(center);};
   double getRadius() const { return radius;};
 
-    void setCenter(const Point center);
-    void setRadius(const double radius);
+  void setCenter(const Point center);
+  void setRadius(const double radius);
 
-  Point getPoint(Angle theta) const;
+  Point getPoint(rhoban_utils::Angle theta) const;
 
   /* Return the theta of this point to the center (position in a clock, in degree) */
-  Angle getTheta(const Point & p) const;
+  rhoban_utils::Angle getTheta(const Point & p) const;
 
   /**
    * Does this circle contains the point p ?
@@ -76,6 +76,6 @@ public:
   std::vector<Point>tangents(const Point &p);
 };
 
-}
-
 std::ostream & operator<<(std::ostream & out, const rhoban_geometry::Circle & c);
+
+}

@@ -1,7 +1,7 @@
 #include <math.h>
 #include <cmath>
 
-#include "Point.hpp"
+#include "rhoban_geometry/point.h"
 
 #include <random>
 #include <chrono>
@@ -10,11 +10,14 @@
 
 using namespace std;
 
-std::default_random_engine get_random_engine()
+static std::default_random_engine get_random_engine()
 {
   unsigned long seed = std::chrono::system_clock::now().time_since_epoch().count();
   return std::default_random_engine(seed);
 }
+
+namespace rhoban_geometry
+{
 
 
 double Point::getDist(const Point & other) const{
@@ -40,13 +43,13 @@ Point & Point::normalize(double newLength){
   return *this;
 }
 
-Angle Point::getTheta() const{
+rhoban_utils::Angle Point::getTheta() const{
   double theta = atan2(getY(), getX()) * 180 / M_PI;
-  return Angle(theta);
+  return rhoban_utils::Angle(theta);
 }
 
 bool Point::isCollinear(const Point & other) const{
-  Angle deltaTheta = getTheta() - other.getTheta();
+  rhoban_utils::Angle deltaTheta = getTheta() - other.getTheta();
   double delta = abs(deltaTheta.getSignedValue());
   return (delta < EPSILON ||
           (180 - delta) < EPSILON);
@@ -58,13 +61,13 @@ Point Point::perpendicular() const{
   return Point(newX, newY);
 }
 
-Point Point::rotation(const Angle & a) const{
+Point Point::rotation(const rhoban_utils::Angle & a) const{
   double newX = getX() * cos(a) - getY() * sin(a);
   double newY = getX() * sin(a) + getY() * cos(a);
   return Point(newX,newY);
 }
 
-Point Point::rotation(const Angle & a, const Point & rotCenter) const{
+Point Point::rotation(const rhoban_utils::Angle & a, const Point & rotCenter) const{
   Point diff = *this - rotCenter;
   return rotCenter + diff.rotation(a);
 }
@@ -127,7 +130,7 @@ bool Point::operator==(const Point & other) const{
 }
 
 
-Point Point::mkPointFromPolar(double rho, Angle a){
+Point Point::mkPointFromPolar(double rho, rhoban_utils::Angle a){
   double theta = a.getValue() * M_PI / 180.0;
   return Point(cos(theta) * rho, sin(theta) * rho);
 }
@@ -147,16 +150,18 @@ Point Point::mkRandomPolar(double rhoMin, double rhoMax,
   return mkPointFromPolar(rho, theta);
 }
 
-Point operator*(double ratio, const Point & p)
+rhoban_geometry::Point operator*(double ratio, const rhoban_geometry::Point & p)
 {
   return p * ratio;
 }
 
-ostream& operator<<(ostream& out, const Point& p){
+ostream& operator<<(ostream& out, const rhoban_geometry::Point& p){
   return out << '{' << p.getX() << ',' << p.getY() << '}';
 }
 
-Point average(const vector<Point> & points)
+}
+
+rhoban_geometry::Point average(const vector<rhoban_geometry::Point> & points)
 {
   double xSum(0), ySum(0);
   int n = points.size();
@@ -164,10 +169,10 @@ Point average(const vector<Point> & points)
     xSum += points[i].getX();
     ySum += points[i].getY();
   }
-  return Point(xSum / n, ySum / n);
+  return rhoban_geometry::Point(xSum / n, ySum / n);
 }
 
-Point average(const vector<Point> & points, const vector<double> & weights)
+rhoban_geometry::Point average(const vector<rhoban_geometry::Point> & points, const vector<double> & weights)
 {
   double xSum(0), ySum(0);
   double totalWeight = 0;
@@ -176,12 +181,12 @@ Point average(const vector<Point> & points, const vector<double> & weights)
     ySum += points[i].getY() * weights[i];
     totalWeight += weights[i];
   }
-  return Point(xSum, ySum) / totalWeight;
+  return rhoban_geometry::Point(xSum, ySum) / totalWeight;
 }
 
-double stdDev(const vector<Point> & points)
+double stdDev(const vector<rhoban_geometry::Point> & points)
 {
-  Point middle = average(points);
+  rhoban_geometry::Point middle = average(points);
   double squareDist(0);
   int n = points.size();
   for (int i = 0; i < n; i++) {

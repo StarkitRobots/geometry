@@ -30,15 +30,16 @@ public:
   
 };
 
+}
+
 /**
  * Add the given circle to the clusters, if the circle doesn't match any of
  * the clusters, then create a new Cluster
  */
-void addToClusters(const Circle & c,
-                   std::vector<CircleCluster> & clusters,
+void addToClusters(const rhoban_geometry::Circle & c,
+                   std::vector<rhoban_geometry::CircleCluster> & clusters,
                    float flatTol, float percentTol);
 
-std::vector<CircleCluster> createClusters(const std::vector<Circle> & circles,
-                                          float flatTol, float percentTol);
-
-}
+std::vector<rhoban_geometry::CircleCluster>
+createClusters(const std::vector<rhoban_geometry::Circle> & circles,
+               float flatTol, float percentTol);

@@ -29,7 +29,7 @@ public:
   double getY() const{ return y;};
 
 //TODO handle case with point at 0.0, 0.0 in getTheta and isCollinear
-  Angle getTheta() const;
+  rhoban_utils::Angle getTheta() const;
   bool isCollinear(const Point & other) const;
   /* Return the distance to point in {0,0} */
   double getLength() const;
@@ -38,8 +38,8 @@ public:
 
   /* Return a Point with a rotation of 90° */
   Point perpendicular() const;
-  Point rotation(const Angle & a) const;
-  Point rotation(const Angle & a,
+  Point rotation(const rhoban_utils::Angle & a) const;
+  Point rotation(const rhoban_utils::Angle & a,
                  const Point & rotCenter) const;
 
   static double dotProduct(const Point & p1, const Point & p2);
@@ -57,7 +57,7 @@ public:
   Point& operator*=(double ratio);
   Point& operator/=(double ratio);
 
-  static Point mkPointFromPolar(double rho, Angle theta);
+  static Point mkPointFromPolar(double rho, rhoban_utils::Angle theta);
 
   // Random points creators
   static Point mkRandomPolar(double rhoMax);
@@ -68,15 +68,17 @@ public:
   bool operator==(const Point & other) const;
 };
 
-Point operator*(double ratio, const Point & p);
 
-std::ostream& operator<<(std::ostream& out, const Point& p);
+rhoban_geometry::Point operator*(double ratio, const rhoban_geometry::Point & p);
 
-/* Return the point which is the average of the points in the vector */
-Point average(const std::vector<Point> & points);
-/* Return sum(points[i]* weights[i]) / sum(weights[i]) */
-Point average(const std::vector<Point> & points, const std::vector<double> & weights);
-/* Return the standard deviation to the average of the points */
-double stdDev(const std::vector<Point> & points);
+std::ostream& operator<<(std::ostream& out, const rhoban_geometry::Point & p);
 
 }
+
+/* Return the point which is the average of the points in the vector */
+rhoban_geometry::Point average(const std::vector<rhoban_geometry::Point> & points);
+/* Return sum(points[i]* weights[i]) / sum(weights[i]) */
+rhoban_geometry::Point average(const std::vector<rhoban_geometry::Point> & points,
+                               const std::vector<double> & weights);
+/* Return the standard deviation to the average of the points */
+double stdDev(const std::vector<rhoban_geometry::Point> & points);

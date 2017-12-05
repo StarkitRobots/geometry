@@ -31,7 +31,7 @@ public:
   //         the problem that two different lines can have the same rho and
   //         theta. e.g. y = 1 and y = -1
   double getRho() const;
-  Angle getTheta() const;
+  rhoban_utils::Angle getTheta() const;
 
   /* return a normalized vector of size 1 in one of the two directions of the
    * line.
@@ -60,10 +60,10 @@ public:
                                         double weight1, double weight2);
 
   // Return the smallest angle diff between two lines (-90 to 90)
-  static Angle angleDiff(const ParametricLine & l1,
-                         const ParametricLine & l2);
+  static rhoban_utils::Angle angleDiff(const ParametricLine & l1,
+                                       const ParametricLine & l2);
 
-  static ParametricLine fromRhoTheta(double rho, const Angle & theta);
+  static ParametricLine fromRhoTheta(double rho, const rhoban_utils::Angle & theta);
 };
 
 // thetaTol: degrees

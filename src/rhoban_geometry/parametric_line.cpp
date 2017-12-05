@@ -1,11 +1,15 @@
 #include <cmath>
 #include <iostream>
 
-#include "ParametricLine.hpp"
+#include "rhoban_geometry/parametric_line.h"
 
 #define EPSILON 0.000001
 
 using namespace std;
+using rhoban_utils::Angle;
+
+namespace rhoban_geometry
+{
 
 double ParametricLine::getRho() const{
   return distanceToPoint(Point(0.0,0.0));
@@ -150,4 +154,6 @@ vector<ParametricLine> mergeLines(const vector<ParametricLine> & lines,
     }
   }
   return mergedLines;
+}
+
 }

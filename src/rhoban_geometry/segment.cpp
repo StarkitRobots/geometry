@@ -1,6 +1,9 @@
 #include <cmath>
-#include "Segment.hpp"
-    
+#include "rhoban_geometry/segment.h"
+
+namespace rhoban_geometry
+{
+
 Segment::Segment(Point A, Point B)
     : A(A), B(B)
 {
@@ -63,4 +66,6 @@ bool Segment::intersects(const Circle &circle)
 double Segment::getLength()
 {
     return (B-A).getLength();
+}
+
 }

@@ -1,6 +1,9 @@
-#include "PLCluster.hpp"
+#include "rhoban_geometry/parametric_line_cluster.h"
 
 #include <cmath>
+
+namespace rhoban_geometry
+{
 
 bool PLCluster::accept(const ParametricLine & candidate,
                        float rhoTol, float thetaTol) const
@@ -25,8 +28,10 @@ bool PLCluster::similar(const ParametricLine & l1, const ParametricLine & l2,
   return rhoDiff < rhoTol && thetaDiff < thetaTol;
 }
 
-void addToClusters(const ParametricLine & l,
-                   std::vector<PLCluster> & clusters,
+}
+
+void addToClusters(const rhoban_geometry::ParametricLine & l,
+                   std::vector<rhoban_geometry::PLCluster> & clusters,
                    float rhoTol, float thetaTol, int maxCluster)
 {
   bool accepted = false;
@@ -41,6 +46,6 @@ void addToClusters(const ParametricLine & l,
   }
   // If no cluster matches, create a new one
   if (!accepted && (unsigned int) maxCluster > clusters.size()) {
-    clusters.push_back(PLCluster(l));
+    clusters.push_back(rhoban_geometry::PLCluster(l));
   }
 }

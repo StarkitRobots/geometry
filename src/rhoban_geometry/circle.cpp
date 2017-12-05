@@ -1,12 +1,16 @@
 #include <cmath>
 
-#include "Circle.hpp"
+#include "rhoban_geometry/circle.h"
 
-#include "ParametricLine.hpp"
+#include "rhoban_geometry/parametric_line.h"
 
 #define EPSILON 0.000001
 
 using namespace std;
+using namespace rhoban_utils;
+
+namespace rhoban_geometry
+{
 
 void Circle::setCenter(const Point _center) {
     center = _center;
@@ -134,8 +138,9 @@ std::vector<Point> Circle::tangents(const Point &p)
     return result;
 }
 
-ostream & operator<<(ostream & out, const Circle & c){
+ostream & operator<<(ostream & out, const rhoban_geometry::Circle & c){
   out << '{' << c.getRadius() << ',' << c.getCenter() << '}';
   return out;
 }
-  
+
+}
