@@ -28,8 +28,6 @@ bool PLCluster::similar(const ParametricLine & l1, const ParametricLine & l2,
   return rhoDiff < rhoTol && thetaDiff < thetaTol;
 }
 
-}
-
 void addToClusters(const rhoban_geometry::ParametricLine & l,
                    std::vector<rhoban_geometry::PLCluster> & clusters,
                    float rhoTol, float thetaTol, int maxCluster)
@@ -48,4 +46,6 @@ void addToClusters(const rhoban_geometry::ParametricLine & l,
   if (!accepted && (unsigned int) maxCluster > clusters.size()) {
     clusters.push_back(rhoban_geometry::PLCluster(l));
   }
+}
+
 }

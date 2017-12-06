@@ -16,15 +16,6 @@ public:
   Point(const Point & other): x(other.x), y(other.y) {};
   Point(double x, double y): x(x), y(y) {};
 
-// TODO refactoring: move somewhere else
-//#ifdef ENABLE_OPENCV
-//  Point(const cv::Point & p): x(p.x), y(p.y){} ;
-//  Point(const cv::Point2f & p): x(p.x), y(p.y){} ;
-//
-//  cv::Point toCV() const { return cv::Point((int)x, (int)y);}
-//  cv::Point2f toCV2f() const { return cv::Point2f(x, y);}
-//#endif
-
   double getX() const{ return x;};
   double getY() const{ return y;};
 

@@ -8,12 +8,12 @@ namespace rhoban_geometry
 class Ellipse {
 private:
   Point origin;
-  Angle theta;//Angle from x-axis to m axis
+  rhoban_utils::Angle theta;//Angle from x-axis to m axis
   double m;
   double n;// n <= m
 public:
   Ellipse(): origin(), theta(), m(1), n(1) {}
-  Ellipse(const Point & p, const Angle & axisAngle,
+  Ellipse(const Point & p, const rhoban_utils::Angle & axisAngle,
           double bigAxisLength, double smallAxisLength) {
     origin = p;
     theta = axisAngle;
@@ -28,7 +28,7 @@ public:
   Point getCenter() const { return origin;}
   double getBigRadius() const { return m;}
   double getSmallRadius() const { return n;}
-  Angle getAngle() const { return theta;}
+  rhoban_utils::Angle getAngle() const { return theta;}
 };
 
 }
