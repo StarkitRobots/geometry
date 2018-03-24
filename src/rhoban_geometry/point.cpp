@@ -19,6 +19,7 @@ static std::default_random_engine get_random_engine()
 namespace rhoban_geometry
 {
 
+Point::Point(const Eigen::Vector2d & p) : x(p.x()), y(p.y()) {}
 
 double Point::getDist(const Point & other) const{
   double dx = getX() - other.getX();

@@ -5,6 +5,8 @@
 
 #include "rhoban_utils/angle.h"
 
+#include <Eigen/Core>
+
 namespace rhoban_geometry
 {
 
@@ -15,6 +17,7 @@ public:
   Point(): x(0.0), y(0.0) {};
   Point(const Point & other): x(other.x), y(other.y) {};
   Point(double x, double y): x(x), y(y) {};
+  Point(const Eigen::Vector2d & p);
 
   double getX() const{ return x;};
   double getY() const{ return y;};
