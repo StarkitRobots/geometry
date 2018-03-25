@@ -9,6 +9,7 @@ namespace rhoban_geometry
 class Segment
 {
     public:
+        Segment();
         Segment(Point A, Point B);
 
         // Returns the alpha of the projection of a point, the alpha

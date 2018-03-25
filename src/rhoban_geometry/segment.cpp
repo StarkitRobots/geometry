@@ -4,6 +4,8 @@
 namespace rhoban_geometry
 {
 
+Segment::Segment(): A(0.0, 0.0), B(0.0, 0.0) { }
+
 Segment::Segment(Point A, Point B)
     : A(A), B(B)
 {

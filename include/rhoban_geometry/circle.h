@@ -21,7 +21,7 @@ public:
   Circle(double x, double y, double radius): center(x, y), radius(radius) {};
   Circle(const Circle & other): center(other.center), radius(other.radius) {};
 
-  Point getCenter() const { return Point(center);};
+  const Point & getCenter() const { return center; };
   double getRadius() const { return radius;};
 
   void setCenter(const Point center);
