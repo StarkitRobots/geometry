@@ -52,7 +52,7 @@ bool Segment::intersects(const Circle &circle)
 
     double det = pow(b, 2) - 4*a*c;
 
-    if (det > 0 && a != 0 && b != 0) {
+    if (det > 0 && a != 0) {
         double a1 = (-b-sqrt(det))/(2*a);
         double a2 = (-b+sqrt(det))/(2*a);
 
