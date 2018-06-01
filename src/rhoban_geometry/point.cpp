@@ -33,11 +33,12 @@ double Point::getLength() const{
 }
 
 Point & Point::normalize(double newLength){
-  if (newLength == 0) {
+  double length = getLength();
+  if (newLength == 0 || length == 0) {
       x = 0;
       y = 0;
   } else {
-      double denominator = getLength() / newLength;
+      double denominator = length / newLength;
       x /= denominator;
       y /= denominator;
   }
