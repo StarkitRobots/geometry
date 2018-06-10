@@ -1,5 +1,6 @@
 set(SOURCES
   point.cpp
+  point_cluster.cpp
   circle.cpp
   circle_cluster.cpp
   interpolation.cpp
