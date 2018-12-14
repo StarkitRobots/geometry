@@ -22,6 +22,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
 #List Sources sub source directories
 set(SOURCES_DIRECTORIES
   src/rhoban_geometry
+  src/rhoban_geometry/3d
 )
 
 #Include Sources sub sources
