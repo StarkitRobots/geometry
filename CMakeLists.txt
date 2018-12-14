@@ -38,3 +38,18 @@ endforeach (DIRECTORY)
 
 add_library (rhoban_geometry ${ALL_SOURCES})
 target_link_libraries(rhoban_geometry ${catkin_LIBRARIES})
+
+
+set(TESTS
+  3d/plane
+  3d/intersection
+  )
+
+if (CATKIN_ENABLE_TESTING)
+  # create an executable for each test
+  foreach(test ${TESTS})
+    string(REPLACE "/" "_" id ${test})
+    catkin_add_gtest(${id} tests/${test}.cpp)
+    target_link_libraries(${id} rhoban_geometry)
+  endforeach(test)
+endif()
