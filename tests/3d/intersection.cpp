@@ -39,6 +39,14 @@ TEST(rayAndPoint, getIntersection) {
   for (int d = 0; d < 3; d++) {
     EXPECT_NEAR(expected(d), computed(d), epsilon);
   }
+  /// Non-perpendicular ray
+  r = Ray(Eigen::Vector3d(0,0,1), Eigen::Vector3d(2.0,1.0,-0.2));
+  p = Plane(Eigen::Vector3d(0,0,1), 0.6);
+  computed = getIntersection(r,p);
+  expected = Eigen::Vector3d(4,2,0.6);
+  for (int d = 0; d < 3; d++) {
+    EXPECT_NEAR(expected(d), computed(d), epsilon);
+  }
 }
 
 

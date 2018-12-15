@@ -30,7 +30,7 @@ Eigen::Vector3d getIntersection(const Ray & r, const Plane & p)
   if (!isIntersectionPoint(r,p)) {
     throw std::logic_error(DEBUG_INFO + " no interception can be found between r and p");
   }
-  return r.source + p.getDist(r.source) * r.dir;
+  return r.source + p.getDist(r.source) * r.dir / std::fabs(r.dir.dot(p.normal));
 }
 
 }
