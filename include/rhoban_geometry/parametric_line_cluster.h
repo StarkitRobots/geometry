@@ -4,30 +4,36 @@
 
 namespace rhoban_geometry
 {
-
-class PLCluster {
+class PLCluster
+{
 private:
   std::vector<ParametricLine> lines;
   ParametricLine average;
 
 public:
-  PLCluster(const ParametricLine & l): average(l) {lines.push_back(l);}
+  PLCluster(const ParametricLine& l) : average(l)
+  {
+    lines.push_back(l);
+  }
 
-  unsigned int size() const {return lines.size();}
+  unsigned int size() const
+  {
+    return lines.size();
+  }
 
-  const ParametricLine & getAverage() const {return average;}
+  const ParametricLine& getAverage() const
+  {
+    return average;
+  }
 
-  bool accept(const ParametricLine & candidate,
-              float rhoTol, float thetaTol) const;
+  bool accept(const ParametricLine& candidate, float rhoTol, float thetaTol) const;
 
-  void push(const ParametricLine & l);
+  void push(const ParametricLine& l);
 
   /* Return true if the two ParametricLines are similar according to the parameter
    * used.
    */
-  static bool similar(const ParametricLine & l1, const ParametricLine & l2,
-                      float rhoTol, float thetaTol);
-  
+  static bool similar(const ParametricLine& l1, const ParametricLine& l2, float rhoTol, float thetaTol);
 };
 
 /**
@@ -36,9 +42,7 @@ public:
  * if: maxCluster != -1 and clusters.size() >= maxCluster and l do not fit in
  * any cluster, then l is not added to clusters
  */
-void addToClusters(const ParametricLine & l,
-                   std::vector<PLCluster> & clusters,
-                   float rhoTol, float thetaTol,
+void addToClusters(const ParametricLine& l, std::vector<PLCluster>& clusters, float rhoTol, float thetaTol,
                    int maxCluster = -1);
 
-}
+}  // namespace rhoban_geometry

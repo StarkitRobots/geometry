@@ -4,16 +4,15 @@
 
 namespace rhoban_geometry
 {
-
-class Ray {
+class Ray
+{
 public:
   /// Default builder: source is (0,0,0) and dir is (1,0,0)
   Ray();
 
   /// Automatically normalize dir
-  Ray(const Eigen::Vector3d & source, const Eigen::Vector3d & dir);
+  Ray(const Eigen::Vector3d& source, const Eigen::Vector3d& dir);
 
-  
   /// Source of the ray
   Eigen::Vector3d source;
 
@@ -21,4 +20,4 @@ public:
   Eigen::Vector3d dir;
 };
 
-}
+}  // namespace rhoban_geometry

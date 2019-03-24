@@ -2,11 +2,11 @@
 
 namespace rhoban_geometry
 {
-
-Ray::Ray() {}
-Ray::Ray(const Eigen::Vector3d & source, const Eigen::Vector3d & dir)
-  : source(source), dir(dir.normalized())
+Ray::Ray()
+{
+}
+Ray::Ray(const Eigen::Vector3d& source, const Eigen::Vector3d& dir) : source(source), dir(dir.normalized())
 {
 }
 
-}
+}  // namespace rhoban_geometry

@@ -2,14 +2,12 @@
 
 namespace rhoban_geometry
 {
-
-bool CircleCluster::acceptCircle(const Circle & candidate,
-                                 float flatTol, float percentTol) const
+bool CircleCluster::acceptCircle(const Circle& candidate, float flatTol, float percentTol) const
 {
   return similarCircles(getAverage(), candidate, flatTol, percentTol);
 }
 
-void CircleCluster::push(const Circle & c)
+void CircleCluster::push(const Circle& c)
 {
   // Updating average
   int k = size();
@@ -20,10 +18,9 @@ void CircleCluster::push(const Circle & c)
   circles.push_back(c);
 }
 
-bool CircleCluster::similarCircles(const Circle & c1, const Circle & c2,
-                                   float flatTol, float percentTol)
+bool CircleCluster::similarCircles(const Circle& c1, const Circle& c2, float flatTol, float percentTol)
 {
-  //Ensures that c2 radius is bigger than c1 radius, otherwise swap params
+  // Ensures that c2 radius is bigger than c1 radius, otherwise swap params
   if (c1.getRadius() > c2.getRadius())
     return similarCircles(c2, c1, flatTol, percentTol);
   float tol = flatTol + c1.getRadius() * (percentTol / 100);
@@ -33,34 +30,34 @@ bool CircleCluster::similarCircles(const Circle & c1, const Circle & c2,
   return radOk && centerOk;
 }
 
-}
+}  // namespace rhoban_geometry
 
-void addToClusters(const rhoban_geometry::Circle & c,
-                   std::vector<rhoban_geometry::CircleCluster> & clusters,
+void addToClusters(const rhoban_geometry::Circle& c, std::vector<rhoban_geometry::CircleCluster>& clusters,
                    float flatTol, float percentTol)
 {
   bool accepted = false;
   // Insert in a cluster if possible
   for (unsigned int i = 0; i < clusters.size(); i++)
   {
-    if (clusters[i].acceptCircle(c, flatTol, percentTol)) {
+    if (clusters[i].acceptCircle(c, flatTol, percentTol))
+    {
       accepted = true;
       clusters[i].push(c);
       break;
     }
   }
   // If no cluster matches, create a new one
-  if (!accepted) {
+  if (!accepted)
+  {
     clusters.push_back(rhoban_geometry::CircleCluster(c));
   }
 }
 
-std::vector<rhoban_geometry::CircleCluster>
-createClusters(const std::vector<rhoban_geometry::Circle> & circles,
-               float flatTol, float percentTol)
+std::vector<rhoban_geometry::CircleCluster> createClusters(const std::vector<rhoban_geometry::Circle>& circles,
+                                                           float flatTol, float percentTol)
 {
   std::vector<rhoban_geometry::CircleCluster> clusters;
-  for (const rhoban_geometry::Circle & c : circles)
+  for (const rhoban_geometry::Circle& c : circles)
   {
     addToClusters(c, clusters, flatTol, percentTol);
   }

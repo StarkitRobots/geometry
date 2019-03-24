@@ -2,19 +2,22 @@
 
 namespace rhoban_geometry
 {
-
-Plane::Plane() : Plane(Eigen::Vector3d::UnitZ(), 0) {}
-
-Plane::Plane(const Eigen::Vector3d & normal, double dist) : normal(normal.normalized()), dist(dist)
+Plane::Plane() : Plane(Eigen::Vector3d::UnitZ(), 0)
 {
 }
 
-double Plane::getDist(const Eigen::Vector3d & point) const {
+Plane::Plane(const Eigen::Vector3d& normal, double dist) : normal(normal.normalized()), dist(dist)
+{
+}
+
+double Plane::getDist(const Eigen::Vector3d& point) const
+{
   return std::fabs(point.dot(normal) - dist);
 }
 
-Eigen::Vector3d Plane::projectPoint(const Eigen::Vector3d & point) const {
+Eigen::Vector3d Plane::projectPoint(const Eigen::Vector3d& point) const
+{
   return point + normal * (dist - point.dot(normal));
 }
 
-}
+}  // namespace rhoban_geometry
