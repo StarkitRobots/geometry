@@ -13,8 +13,8 @@ catkin_package(
 
 include_directories(include ${catkin_INCLUDE_DIRS})
 
-#Enable C++11
-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall -Wextra")
+#Enable C++17
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -Wall -Wextra")
 
 #Enable Weird option linker
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
