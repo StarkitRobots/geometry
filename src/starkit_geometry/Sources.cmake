@@ -1,0 +1,10 @@
+set(SOURCES
+  point.cpp
+  point_cluster.cpp
+  circle.cpp
+  circle_cluster.cpp
+  interpolation.cpp
+  parametric_line.cpp
+  parametric_line_cluster.cpp
+  segment.cpp
+  )
