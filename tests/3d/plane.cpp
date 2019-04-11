@@ -1,8 +1,8 @@
 #include <gtest/gtest.h>
 
-#include "rhoban_geometry/3d/plane.h"
+#include "starkit_geometry/3d/plane.h"
 
-using namespace rhoban_geometry;
+using namespace starkit_geometry;
 
 double epsilon = std::pow(10, -12);
 

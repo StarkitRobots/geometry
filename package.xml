@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package>
-  <name>rhoban_geometry</name>
+  <name>starkit_geometry</name>
   <version>0.0.0</version>
-  <description>Geometry library for rhoban</description>
+  <description>Geometry library for starkit</description>
 
   <maintainer email="lhofer@labri.fr">Ludovic Hofer</maintainer>
   <author email="lhofer@labri.fr">Ludovic Hofer</author>
@@ -14,8 +14,8 @@
 
   <buildtool_depend>catkin</buildtool_depend>
 
-  <build_depend>rhoban_utils</build_depend> <!-- rhoban/utils -->
-  <run_depend>rhoban_utils</run_depend>
+  <build_depend>starkit_utils</build_depend> <!-- starkit/utils -->
+  <run_depend>starkit_utils</run_depend>
 
   <export>
   </export>

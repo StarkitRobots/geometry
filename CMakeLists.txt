@@ -1,14 +1,14 @@
 cmake_minimum_required(VERSION 2.8)
-project(rhoban_geometry)
+project(starkit_geometry)
 
 find_package(catkin REQUIRED COMPONENTS
-  rhoban_utils
+  starkit_utils
 )
 
 catkin_package(
   INCLUDE_DIRS include
-  LIBRARIES rhoban_geometry
-  CATKIN_DEPENDS rhoban_utils
+  LIBRARIES starkit_geometry
+  CATKIN_DEPENDS starkit_utils
 )
 
 include_directories(include ${catkin_INCLUDE_DIRS})
@@ -21,8 +21,8 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
 
 #List Sources sub source directories
 set(SOURCES_DIRECTORIES
-  src/rhoban_geometry
-  src/rhoban_geometry/3d
+  src/starkit_geometry
+  src/starkit_geometry/3d
 )
 
 #Include Sources sub sources
@@ -36,8 +36,8 @@ foreach (DIRECTORY ${SOURCES_DIRECTORIES})
     set (ALL_SOURCES ${ALL_SOURCES} ${PREFIXED_SOURCES})
 endforeach (DIRECTORY)
 
-add_library (rhoban_geometry ${ALL_SOURCES})
-target_link_libraries(rhoban_geometry ${catkin_LIBRARIES})
+add_library (starkit_geometry ${ALL_SOURCES})
+target_link_libraries(starkit_geometry ${catkin_LIBRARIES})
 
 
 set(TESTS
@@ -50,6 +50,6 @@ if (CATKIN_ENABLE_TESTING)
   foreach(test ${TESTS})
     string(REPLACE "/" "_" id ${test})
     catkin_add_gtest(${id} tests/${test}.cpp)
-    target_link_libraries(${id} rhoban_geometry)
+    target_link_libraries(${id} starkit_geometry)
   endforeach(test)
 endif()
