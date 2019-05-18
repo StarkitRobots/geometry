@@ -14,7 +14,7 @@
 
   <buildtool_depend>catkin</buildtool_depend>
 
-  <build_depend>starkit_utils</build_depend> <!-- starkit/utils -->
+  <build_depend>starkit_utils</build_depend> <!-- StarkitRobots/utils -->
   <run_depend>starkit_utils</run_depend>
 
   <export>
